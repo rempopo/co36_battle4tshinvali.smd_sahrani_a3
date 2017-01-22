@@ -12,4 +12,10 @@ class CfgDebriefing
         subtitle = "Все погибли!";
         description = "Такие дела...";
     };
+	class FAILED
+    {
+        title = "Задание провалено";
+        subtitle = "Черногрузинские войска захватили Тсхинвал!";
+        description = "Такие дела...";
+    };
 };

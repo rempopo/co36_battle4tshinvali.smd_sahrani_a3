@@ -14,7 +14,7 @@ if (_xDist < 0) then {
 	_invert = -1;
 };
 
-_precision = 70; //All artillery will fall within 70m of the line.
+_precision = 20; //All artillery will fall within 70m of the line.
 
 //Artillery will fall on the target area from the moment that this script is invoked until the global variable "stopFiring" is true.
 while {!stopFiring} do {
@@ -26,5 +26,5 @@ while {!stopFiring} do {
 	
 	_strikePos = [_XTarget, _YTarget, 0];
 	_strike = "R_60mm_HE" createVehicle _strikePos;
-	sleep 10;
+	sleep 30;
 };

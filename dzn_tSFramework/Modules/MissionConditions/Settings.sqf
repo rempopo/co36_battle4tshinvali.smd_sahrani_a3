@@ -10,7 +10,7 @@ PlayersBaseTrigger = if (!isNil "baseTrg") then { baseTrg } else { "" };
 /*
  * Default sleep interval between Mission Conditions checks (seconds)
 */
-tSF_MissionCondition_DefaultCheckTimer 			= 15;
+tSF_MissionCondition_DefaultCheckTimer 			= 20;
 
 /*
  * List of mission Ends and Conditions (up to 20 conditions allowed)
@@ -40,5 +40,6 @@ tSF_MissionCondition_DefaultCheckTimer 			= 15;
 // If you're Lim~, then you may need this. Uncomment to use.
 // if (isNil "ts_tasks") then { ts_tasks = 0 };
 
-MissionCondition1 = [ "WIN", "false", "All objectives done" ];
+MissionCondition1 = [ "WIN", "(ts_tasks >=3)&&{call fnc_CheckPlayersReturned}", "All objectives done" ];
 MissionCondition2 = [ "WIPED", "{alive _x} count (call BIS_fnc_listPlayers) < 1", "All dead", 30 ];
+MissionCondition3 = [ "FAILED", "(ts_tasks < 0)", "All dead", 40 ];

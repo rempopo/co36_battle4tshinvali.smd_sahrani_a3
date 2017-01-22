@@ -21,13 +21,13 @@ tSF_module_Briefing = true;
 tSF_module_tSNotes = true;
 tSF_module_tSNotesSettings = true;
 
-tSF_module_CCP = false;
+tSF_module_CCP = true;
 tSF_module_Interactives = false;
 tSF_module_InteractivesACE = false;
 tSF_module_AirborneSupport = false;
 
 tSF_module_EditorVehicleCrew = false;
-tSF_module_EditorUnitBehavior = false;
+tSF_module_EditorUnitBehavior = true;
 tSF_module_EditorRadioSettings = false;
 
 tSF_module_tSAdminTools = true;

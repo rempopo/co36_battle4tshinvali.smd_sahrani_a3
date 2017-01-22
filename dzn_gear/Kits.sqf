@@ -79,7 +79,7 @@ kit_ruf_aat =
 	["<ASSIGNED ITEMS >>  ","ItemMap","ItemCompass","ItemWatch","ItemRadio","Binocular"],
 	["<UNIFORM ITEMS >> ",[["ACE_fieldDressing",5],["ACE_packingBandage",5],["ACE_elasticBandage",5],["ACE_tourniquet",2],["ACE_morphine",2],["ACE_epinephrine",2],["ACE_quikclot",5],["ACE_CableTie",2],["ACE_Flashlight_XL50",1],["ACE_EarPlugs",1]]],
 	["<VEST ITEMS >> ",[["rhs_mag_rgd5",2],["PRIMARY MAG",7]]],
-	["<BACKPACK ITEMS >> ",[["rhs_rpg7_OG7V_mag",2],["rhs_rpg7_PG7V_mag",2]]]
+	["<BACKPACK ITEMS >> ",[["rhs_rpg7_OG7V_mag",2],["rhs_rpg7_PG7V_mag",2],["ACE_EntrenchingTool",1]]]
 ];
 
 kit_ruf_ss =
@@ -102,7 +102,7 @@ kit_ruf_r1 =
 	["<HANDGUN WEAPON >>  ","","",["","","",""]],
 	["<ASSIGNED ITEMS >>  ","ItemMap","ItemCompass","ItemWatch","ItemRadio"],
 	["<UNIFORM ITEMS >> ",[["ACE_fieldDressing",5],["ACE_packingBandage",5],["ACE_elasticBandage",5],["ACE_tourniquet",2],["ACE_morphine",2],["ACE_epinephrine",2],["ACE_quikclot",5],["ACE_CableTie",2],["ACE_Flashlight_XL50",1],["ACE_EarPlugs",1]]],
-	["<VEST ITEMS >> ",[["rhs_mag_rgd5",2],["PRIMARY MAG",7]]],
+	["<VEST ITEMS >> ",[["rhs_mag_rgd5",2],["PRIMARY MAG",6],["ACE_EntrenchingTool",1]]],
 	["<BACKPACK ITEMS >> ",[]]
 ];
 
@@ -114,7 +114,7 @@ kit_ruf_r2 =
 	["<HANDGUN WEAPON >>  ","","",["","","",""]],
 	["<ASSIGNED ITEMS >>  ","ItemMap","ItemCompass","ItemWatch","ItemRadio"],
 	["<UNIFORM ITEMS >> ",[["ACE_fieldDressing",5],["ACE_packingBandage",5],["ACE_elasticBandage",5],["ACE_tourniquet",2],["ACE_morphine",2],["ACE_epinephrine",2],["ACE_quikclot",5],["ACE_CableTie",2],["ACE_Flashlight_XL50",1],["ACE_EarPlugs",1]]],
-	["<VEST ITEMS >> ",[["rhs_mag_rgd5",2],["PRIMARY MAG",7],["SECONDARY MAG",1]]],
+	["<VEST ITEMS >> ",[["rhs_mag_rgd5",2],["PRIMARY MAG",6],["ACE_EntrenchingTool",1]]],
 	["<BACKPACK ITEMS >> ",[]]
 ];
 
@@ -130,6 +130,17 @@ kit_ruf_aar =
 	["<BACKPACK ITEMS >> ",[["rhs_100Rnd_762x54mmR",3]]]
 ];
 
+kit_ruf_crew =
+	[
+	["<EQUIPEMENT >>  ","rhs_uniform_flora_patchless","rhs_6b23_crew","","rhs_tsh4",""],
+	["<PRIMARY WEAPON >>  ","rhs_weap_aks74u","rhs_30Rnd_545x39_AK",["rhs_acc_dtk","","",""]],
+	["<LAUNCHER WEAPON >>  ","","",["","","",""]],
+	["<HANDGUN WEAPON >>  ","","",["","","",""]],
+	["<ASSIGNED ITEMS >>  ","ItemMap","ItemCompass","ItemWatch","tf_fadak_1"],
+	["<UNIFORM ITEMS >> ",[["ACE_fieldDressing",5],["ACE_packingBandage",5],["ACE_elasticBandage",5],["ACE_tourniquet",2],["ACE_morphine",2],["ACE_epinephrine",2],["ACE_quikclot",5],["ACE_CableTie",2],["ACE_Flashlight_XL50",1],["ACE_EarPlugs",1]]],
+	["<VEST ITEMS >> ",[["rhs_mag_rgd5",1],["PRIMARY MAG",3]]],
+	["<BACKPACK ITEMS >> ",[]]
+];
 
 // georgian units
 
