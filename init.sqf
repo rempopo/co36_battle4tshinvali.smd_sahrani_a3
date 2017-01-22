@@ -10,13 +10,14 @@ if (isNil "ts_tasks") then { ts_tasks = 0 };
   // TS Framework
 [] execVM "dzn_tSFramework\dzn_tSFramework_Init.sqf";
   // dzn AAR
-//[] execVM "dzn_brv\dzn_brv_init.sqf";
+[] execVM "dzn_brv\dzn_brv_init.sqf";
 
 [] execVM "arty.sqf";
 
 0 = [] spawn {
-waitUntil {time > 1*30};
-ambush call dzn_fnc_dynai_activateZone;
-sleep 30;
-[ambush, [ [12963,8846.63,0], [13017.3,8694.19,0] ], "PATROL"] call dzn_fnc_dynai_moveGroups;
+waitUntil {time > 40*60};
+ambush_me call dzn_fnc_dynai_activateZone;
+sleep 120;
+//[ ambush_me, [ [12963,8846.63,0], [13017.3,8694.19,0],[13149.9,8749.3,0] ], "PATROL"] call dzn_fnc_dynai_moveGroups;
+[ ambush_me, [  [12963,8846.63,0], [13017.3,8694.19,0],[13149.9,8749.3,0]  ] ] call dzn_fnc_dynai_setZoneKeypoints;
 };

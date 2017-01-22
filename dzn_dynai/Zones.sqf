@@ -3,7 +3,7 @@
 // MAIN BASE
 //hello
 [
-    "ambush", /* Zone Name */
+    "ambush_me", /* Zone Name */
     "WEST",false, /* Side, is Active */ [],[],
     /* Groups: */
     [
@@ -159,6 +159,32 @@
                 ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
                 ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
                 ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
+            ]
+        ]
+    ],
+    /* Behavior: Speed, Behavior, Combat mode, Formation */
+    ["FULL","SAFE","YELLOW","LINE"]
+]
+
+,[
+    "rebels", /* Zone Name */
+    "EAST",true, /* Side, is Active */ [],[],
+    /* Groups: */
+    [
+        [
+            1, /* Groups quantity */
+            /* Units */
+            [
+                ["O_Soldier_F", ["indoors"], "OSET_REBEL_random"]
+                ,["O_Soldier_F", ["indoors"], "OSET_REBEL_random"]
+                ,["O_Soldier_F", ["indoors"], "OSET_REBEL_random"]
+                ,["O_Soldier_F", ["indoors"], "OSET_REBEL_random"]
+                ,["O_Soldier_F", ["indoors"], "OSET_REBEL_random"]
+                ,["O_Soldier_F", ["indoors"], "OSET_REBEL_random"]
+                ,["O_Soldier_F", ["indoors"], "OSET_REBEL_random"]
+                ,["O_Soldier_F", ["indoors"], "OSET_REBEL_random"]
+                ,["O_Soldier_F", ["indoors"], "OSET_REBEL_random"]
+                ,["O_Soldier_F", ["indoors"], "OSET_REBEL_random"]
             ]
         ]
     ],

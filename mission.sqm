@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=6;
+		nextID=12;
 	};
 	class Camera
 	{
-		pos[]={14611.326,161.79451,10502.483};
-		dir[]={-0.6379565,-0.5318718,0.55695558};
-		up[]={-0.40067959,0.8468076,0.34980595};
-		aside[]={0.65768486,-9.7719021e-007,0.75333673};
+		pos[]={14518.606,309.17548,11021.587};
+		dir[]={-0.82308382,-0.43035689,0.37069127};
+		up[]={-0.39242536,0.90263915,0.1767364};
+		aside[]={0.41065919,-8.3626219e-007,0.91183013};
 	};
 };
 binarizationWanted=0;
@@ -191,25 +191,6 @@ class CustomAttributes
 		name="Multiplayer";
 		class Attribute0
 		{
-			property="RespawnButton";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
-					value=0;
-				};
-			};
-		};
-		class Attribute1
-		{
 			property="RespawnTemplates";
 			expression="true";
 			class Value
@@ -255,6 +236,25 @@ class CustomAttributes
 							};
 						};
 					};
+				};
+			};
+		};
+		class Attribute1
+		{
+			property="RespawnButton";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"SCALAR"
+						};
+					};
+					value=0;
 				};
 			};
 		};
@@ -1928,8 +1928,8 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={16344.562,101.82668,10508.296};
-						angles[]={0.30605882,0,0.053945597};
+						position[]={16034.01,152.07726,10560.268};
+						angles[]={0.47160032,0,6.0561767};
 					};
 					name="dzn_dynai_core";
 					id=175;
@@ -1940,8 +1940,8 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={15577.658,53.310944,10112.082};
-						angles[]={0.25529501,0,0.070877887};
+						position[]={15537.831,52.959564,10496.65};
+						angles[]={6.1785731,0,0.12041003};
 					};
 					name="fo";
 					id=176;
@@ -1967,8 +1967,8 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={15581.211,65.432121,10559.702};
-						angles[]={0.058928922,0,0.42034182};
+						position[]={15530.705,66.606705,10648.987};
+						angles[]={0.083799981,0,0.32593277};
 					};
 					name="arty";
 					id=178;
@@ -1994,12 +1994,13 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={15552.463,68.424049,9595.9463};
-						angles[]={0.039977662,0,6.0954309};
+						position[]={15537.668,53.227669,10359.265};
+						angles[]={6.1480198,0,6.0297637};
 					};
 					name="post";
 					id=180;
 					type="Logic";
+					atlOffset=3.8146973e-006;
 				};
 				class Item7
 				{
@@ -2021,8 +2022,8 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={15953.452,32.847187,9113.0898};
-						angles[]={6.258194,0,6.2711902};
+						position[]={15816.721,43.760868,10166.604};
+						angles[]={6.0973616,0,0.21367902};
 					};
 					name="rebels";
 					id=182;
@@ -2045,29 +2046,30 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={15877.146,241.91977,11000.36};
-						angles[]={6.1558828,0,5.9880733};
+						position[]={15789.569,135.67331,10857.3};
+						angles[]={6.2711902,0,0.49898085};
 					};
-					name="ambush";
+					name="ambush_me";
 					id=184;
 					type="Logic";
 				};
 				class Item11
 				{
 					dataType="Trigger";
-					position[]={14086.574,34.751705,13360.939};
+					position[]={14231.605,36.117161,13630.316};
 					angle=0.54768163;
 					class Attributes
 					{
-						sizeA=171.78369;
-						sizeB=217.8623;
+						sizeA=276.06238;
+						sizeB=538.94971;
 					};
 					id=185;
 					type="EmptyDetectorAreaR250";
+					atlOffset=5.0241318;
 				};
 			};
 			id=90;
-			atlOffset=31.490215;
+			atlOffset=4.9271851;
 		};
 		class Item16
 		{
