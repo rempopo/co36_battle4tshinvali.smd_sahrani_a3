@@ -14,7 +14,7 @@ if (isNil "ts_tasks") then { ts_tasks = 0 };
 
 [] execVM "arty.sqf";
 
-0 = [] spawn {
+[] spawn {
 waitUntil {time > 40*60};
 ambush_me call dzn_fnc_dynai_activateZone;
 sleep 120;
