@@ -26,8 +26,7 @@ if (!isNil "dzn_fnc_setWeather") then {
 
 [] spawn {
 waitUntil {time > 3*60};
+[ ambush_me, [  [12963,8846.63,0], [13017.3,8694.19,0],[13149.9,8749.3,0]  ] ] call dzn_fnc_dynai_setZoneKeypoints;
 ambush_me call dzn_fnc_dynai_activateZone;
-sleep 40;
-[ ambush_me, [ [12963,8846.63,0], [13017.3,8694.19,0],[13149.9,8749.3,0] ], "SAD"] call dzn_fnc_dynai_moveGroups;
-//[ ambush_me, [  [12963,8846.63,0], [13017.3,8694.19,0],[13149.9,8749.3,0]  ] ] call dzn_fnc_dynai_setZoneKeypoints;
+//[ ambush_me, [ [12963,8846.63,0], [13017.3,8694.19,0],[13149.9,8749.3,0] ], "SAD"] call dzn_fnc_dynai_moveGroups;
 };
