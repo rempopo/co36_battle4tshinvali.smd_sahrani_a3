@@ -11,7 +11,7 @@
             3, /* Groups quantity */
             /* Units */
             [
-                ["CUP_B_MTVR_USMC", "Vehicle Road Patrol", ""]
+                ["CUP_B_MTVR_USMC", "Vehicle Advance", ""]
                 ,["B_Soldier_F", [0,"Driver"], "kit_geo_random"]
                 ,["B_Soldier_F", [0,"Cargo"], "kit_geo_random"]
 				,["B_Soldier_F", [], "kit_geo_random"]
@@ -27,7 +27,7 @@
             3, /* Groups quantity */
             /* Units */
             [
-                ["CUP_B_LR_Transport_CZ_W", "Vehicle Road Patrol", ""]
+                ["CUP_B_LR_Transport_CZ_W", "Vehicle Advance", ""]
                 ,["B_Soldier_F", [0,"Driver"], "kit_geo_random"]
 				,["B_Soldier_F", [], "kit_geo_random"]
 				,["B_Soldier_F", [], "kit_geo_random"]
@@ -38,7 +38,7 @@
             3, /* Groups quantity */
             /* Units */
             [
-                ["CUP_B_Dingo_CZ_Wdl", "Vehicle Road Patrol", ""]
+                ["CUP_B_Dingo_CZ_Wdl", "Vehicle Advance", ""]
                 ,["B_Soldier_F", [0,"Driver"], "kit_geo_random"]
 				,["B_Soldier_F", [], "kit_geo_random"]
 				,["B_Soldier_F", [], "kit_geo_random"]
@@ -49,7 +49,7 @@
             2, /* Groups quantity */
             /* Units */
             [
-                ["CUP_B_T72_CDF", "Vehicle Road Patrol", ""]
+                ["CUP_B_T72_CDF", "Vehicle Advance", ""]
                 ,["B_Soldier_F", [0,"Driver"], "kit_geo_random"]
 				,["B_Soldier_F", [0,"Gunner"], "kit_geo_random"]
 				,["B_Soldier_F", [0,"Commander"], "kit_geo_random"]
@@ -59,7 +59,7 @@
             2, /* Groups quantity */
             /* Units */
             [
-                ["CUP_B_BMP2_CDF", "Vehicle Road Patrol", ""]
+                ["CUP_B_BMP2_CDF", "Vehicle Advance", ""]
                 ,["B_Soldier_F", [0,"Driver"], "kit_geo_random"]
 				,["B_Soldier_F", [0,"Gunner"], "kit_geo_random"]
 				,["B_Soldier_F", [0,"Commander"], "kit_geo_random"]
