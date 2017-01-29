@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1546;
+	toggles=1537;
 	class ItemIDProvider
 	{
-		nextID=292;
+		nextID=294;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={13933.73,51.610855,9841.7969};
-		dir[]={0.72805583,-0.59798396,-0.33545724};
-		up[]={0.54313427,0.8014769,-0.25025344};
-		aside[]={-0.41851693,1.8397841e-006,-0.90830427};
+		pos[]={14669.452,76.021881,10521.432};
+		dir[]={-0.68612605,-0.074591815,-0.72368282};
+		up[]={-0.051338937,0.99720955,-0.054148737};
+		aside[]={-0.72570324,1.2382225e-007,0.68804127};
 	};
 };
 binarizationWanted=0;
@@ -313,7 +313,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=111;
+		items=112;
 		class Item0
 		{
 			dataType="Object";
@@ -1930,18 +1930,19 @@ class Mission
 				class Item5
 				{
 					dataType="Trigger";
-					position[]={14632.939,44.40192,10579.819};
-					angle=5.2896042;
+					position[]={14555.747,43.940918,10695.665};
+					angle=5.0314927;
 					class Attributes
 					{
-						sizeA=50.684563;
-						sizeB=117.84946;
+						sizeA=146.67233;
+						sizeB=236.34135;
 						activationType="NOT PRESENT";
 						activationBy="WEST";
 						isRectangle=1;
 					};
 					id=179;
 					type="EmptyDetectorAreaR250";
+					atlOffset=-0.34952164;
 				};
 				class Item6
 				{
@@ -2025,7 +2026,7 @@ class Mission
 				};
 			};
 			id=90;
-			atlOffset=2.6073608;
+			atlOffset=2.5832558;
 		};
 		class Item13
 		{
@@ -3130,20 +3131,20 @@ class Mission
 				class Item0
 				{
 					dataType="Trigger";
-					position[]={14636.609,45.490921,10586.58};
-					angle=2.1047623;
+					position[]={14682.981,46.297009,10564.303};
+					angle=5.0091825;
 					class Attributes
 					{
 						text="arty";
 						onActivation="ts_tasks = ts_tasks + 1;";
-						sizeA=54.91;
-						sizeB=115.425;
+						sizeA=3.8840001;
+						sizeB=9.4350004;
 						activationType="NOT PRESENT";
 						activationBy="WEST";
+						isRectangle=1;
 					};
 					id=160;
 					type="EmptyDetectorAreaR50";
-					atlOffset=0.90048981;
 				};
 				class Item1
 				{
@@ -3182,7 +3183,7 @@ class Mission
 				};
 			};
 			id=174;
-			atlOffset=25.230549;
+			atlOffset=24.692905;
 		};
 		class Item51
 		{
@@ -3220,47 +3221,51 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={14364.305,42.484554,10754.465};
+				position[]={13662.873,42.891113,9195.3496};
 				angles[]={6.278194,0,6.2741885};
 			};
 			name="w1";
 			id=194;
 			type="Logic";
+			atlOffset=21.535593;
 		};
 		class Item55
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={12967.84,19.665932,8841.6611};
+				position[]={13434.408,6.9594727,8850.3564};
 				angles[]={0,0,0.022993837};
 			};
 			name="w4";
 			id=195;
 			type="Logic";
+			atlOffset=-12.526134;
 		};
 		class Item56
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={13002.123,18.583706,8847.8672};
+				position[]={13614.766,6.9858398,9054.8281};
 				angles[]={0,0,5.7061286};
 			};
 			name="w3";
 			id=196;
 			type="Logic";
+			atlOffset=-13.579153;
 		};
 		class Item57
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={13047.05,7.956141,8849.3408};
+				position[]={13275.053,10.999512,8848.1855};
 			};
 			name="w2";
 			id=197;
 			type="Logic";
+			atlOffset=-2.8116751;
 		};
 		class Item58
 		{
@@ -4489,6 +4494,47 @@ class Mission
 			};
 			id=290;
 			atlOffset=-0.0050010681;
+		};
+		class Item111
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14324.92,45.712208,10666.445};
+				angles[]={0,0.30979872,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="this setVectorUp [0,0,1];";
+			};
+			id=293;
+			type="Land_HBarrierTower_F";
+			atlOffset=-0.29054642;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ace_isMedicalFacility";
+					expression="_this setVariable [""ace_medical_isMedicalFacility"",_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 	class Connections

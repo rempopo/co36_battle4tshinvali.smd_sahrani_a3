@@ -129,6 +129,18 @@
 				,["B_Soldier_F", ["indoors"], "kit_geo_random"]
                 ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
                 ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
+                ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
+            ]
+        ]
+		,[
+            2, /* Groups quantity */
+            /* Units */
+            [
+                ["CUP_B_Dingo_CZ_Wdl", "Vehicle Road Patrol", ""]
+                ,["B_Soldier_F", [0,"Driver"], "kit_geo_random"]
+				,["B_Soldier_F", [], "kit_geo_random"]
+				,["B_Soldier_F", [], "kit_geo_random"]
+				,["B_Soldier_F", [], "kit_geo_random"]
             ]
         ]
     ],
@@ -142,7 +154,7 @@
     /* Groups: */
     [
         [
-            2, /* Groups quantity */
+            4, /* Groups quantity */
             /* Units */
             [
                 ["B_Soldier_F", [], "kit_geo_random"]
@@ -159,34 +171,13 @@
                 ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
                 ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
                 ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
-            ]
-        ]
-    ],
-    /* Behavior: Speed, Behavior, Combat mode, Formation */
-    ["NORMAL","SAFE","YELLOW","COLUMN"]
-]
-
-,[
-    "ambush", /* Zone Name */
-    "WEST",true, /* Side, is Active */ [],[],
-    /* Groups: */
-    [
-        [
-            2, /* Groups quantity */
-            /* Units */
-            [
-                ["B_Soldier_F", [], "kit_geo_random"]
-                ,["B_Soldier_F", [], "kit_geo_random"]
-                ,["B_Soldier_F", [], "kit_geo_random"]
-                ,["B_Soldier_F", [], "kit_geo_random"]
-            ]
-        ]
-        ,[
-            1, /* Groups quantity */
-            /* Units */
-            [
-                ["B_Soldier_F", ["indoors"], "kit_geo_random"]
+				,["B_Soldier_F", ["indoors"], "kit_geo_random"]
                 ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
+                ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
+				,["B_Soldier_F", ["indoors"], "kit_geo_random"]
+                ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
+                ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
+				,["B_Soldier_F", ["indoors"], "kit_geo_random"]
                 ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
                 ,["B_Soldier_F", ["indoors"], "kit_geo_random"]
             ]
