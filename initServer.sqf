@@ -25,8 +25,8 @@ if (!isNil "dzn_fnc_setWeather") then {
 };
 
 [] spawn {
-sleep 40*60;
-[ ambush_me, [  getPosATL w1, getPosATL w2, getPosATL w3, getPosATL w4  ] ] call dzn_fnc_dynai_setZoneKeypoints;
-sleep 10;
-ambush_me call dzn_fnc_dynai_activateZone;
+	sleep 40*60;
+	[ ambush_me, [  getPosATL w1, getPosATL w2, getPosATL w3, getPosATL w4  ] ] call dzn_fnc_dynai_setZoneKeypoints;
+	sleep 10;
+	ambush_me call dzn_fnc_dynai_activateZone;
 };
