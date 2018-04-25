@@ -13,6 +13,13 @@ if (hasInterface) then {
 			]
 		};
 		
+		if (tSF_Intro_LineText2 == "Район Н, Страна Н, Регион Н") then {
+			tSF_Intro_LineText2 = "";
+		};
+		if (tSF_Intro_LineText3 == "Операция 'Без имени'") then {
+			tSF_Intro_LineText3 = "";
+		};
+		
 		[
 			[
 				
@@ -26,18 +33,18 @@ if (hasInterface) then {
 		] spawn BIS_fnc_typeText;
 	};
 
-
 	if !(tSF_Intro_ShowCurrentTime) exitWith {};
-	
-	private _GetFormattedTime = {
-		private _hrs = floor (daytime);
-		private _min = str( floor ((daytime - _hrs) * 60));
-		if (count (_min) == 1) then {
-			_min = "0" + _min;
-		};
-		
-		( format ["%1:%2", str(_hrs), _min] )
-	};
-	
-	tSF_Intro_LineText1 = format ["%1 %2", call _GetFormattedTime, tSF_Intro_LineText1];
+	tSF_Intro_LineText1 = format [
+		"%1 %2"
+		, call {
+			private _hrs = MissionDate select 3;
+			private _min = str(MissionDate select 4);
+			if (count (_min) == 1) then {
+				_min = "0" + _min;
+			};
+
+			( format ["%1:%2", str(_hrs), _min] )
+		}
+		, tSF_Intro_LineText1
+	];
 };

@@ -25,6 +25,10 @@ dzn_fnc_missionConditions_prepareConditions = {
 			
 				tSF_Ends pushBack [_ending,_desc];
 			
+				if (typename _condition == "CODE") then {
+					_condition = ((str(_condition) splitString "") select [1, count str(_condition) - 2]) joinString "";
+				};
+				
 				waitUntil {
 					sleep _sleepTime;
 					call compile _condition
@@ -50,4 +54,8 @@ dzn_fnc_missionConditions_prepareConditions = {
 dzn_fnc_missionConditions_startClienListener = {
 	waitUntil {sleep 1; !isNil "MissionFinished"};
 	[MissionFinished, true, 2] call BIS_fnc_endMission;
+};
+
+fnc_isAllDead = {
+	{alive _x} count (call BIS_fnc_listPlayers) < 1
 };

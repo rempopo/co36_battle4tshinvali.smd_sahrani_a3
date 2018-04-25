@@ -1,6 +1,7 @@
 // Delay before and after zones initializations
 dzn_dynai_preInitTimeout			=	3;
 dzn_dynai_afterInitTimeout			=	3;
+dzn_dynai_initCondition			=	{ true };
 
 // Group Responses
 dzn_dynai_allowGroupResponse			= true;
@@ -29,12 +30,21 @@ dzn_dynai_complexSkillLevel			=	[
 ];
 
 // Building list
-dzn_dynai_allowedHouses				= ["House"];
+dzn_dynai_allowedBuildingClasses			= ["House"];
+dzn_dynai_restrictedBuildingClasses		= [
+	/* Altis */
+	"Land_Metal_Shed_F","Land_Slum_House01_F","Land_Slum_House03_F","Land_u_Addon_01_V1_F","Land_Chapel_Small_V1_F","Land_i_Garage_V1_F","Land_LightHouse_F"
+	/*  Takistan */
+	, "Land_Vez"
+];
 
 // Caching Settings
-dzn_dynai_enableCaching				= true;
+dzn_dynai_enableCaching			= true;
 dzn_dynai_cachingTimeout			= 20; // seconds
 dzn_dynai_cacheCheckTimer			= 15; // seconds
 
-dzn_dynai_cacheDistance				= 800; // meters
+dzn_dynai_cacheDistance			= 800; // meters
+dzn_dynai_cachingPosition			= [-1000,-1000,0];
 
+// Zeus Compatibility settings
+dzn_dynai_enableZeusCompatibility	= true;

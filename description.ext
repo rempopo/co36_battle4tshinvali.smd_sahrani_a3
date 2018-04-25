@@ -17,9 +17,9 @@ class Params
 	class par_daytime
 	{
 	    title = "Время суток";
-	    values[] = {0,1};
+	    values[] = {0,1,2};
 	    default = 0;
-	    texts[] = {"День","Ночь"};
+	    texts[] = {"День","Ночь", "Случайно"};
 	};
 	class par_weather
 	{
@@ -48,7 +48,17 @@ class Params
 		title = "---- dzn DynAI Settings ---------"; 
 		values[] = {0};
 		texts[] = {""};
-	};	
+	};
+	class par_dynai_enableGroupResponse
+	{
+		title = "     Group Response system";
+		values[] = {0,1};
+		default = 1;
+		texts[] = {
+			"Disabled"
+			, "Enabled"
+		};
+	};
 	class par_dynai_amountMultiplier
 	{
 		title = "     Group Amount Multiplier";
@@ -81,19 +91,19 @@ class Params
 	class par_dynai_skillGeneral
 	{
 		title = "          Skill: General (%)";
-		values[] = {60,65,70,75,80,85,90,95,100};
+		values[] = {10,20,30,40,45,50,55,60,65,70,75,80,85,90,95,100};
 		default = 95;
 	};
 	class par_dynai_skillAccuracy
 	{
 		title = "          Skill (Complex): Accuracy (%)";
-		values[] = {40,45,50,55,60,65,70,75,80,85,90,95,100};
+		values[] = {10,20,30,40,45,50,55,60,65,70,75,80,85,90,95,100};
 		default = 80;
 	};
 	class par_dynai_skillAimSpeed
 	{
 		title = "          Skill (Complex): Aiming Speed (%)";
-		values[] = {40,45,50,55,60,65,70,75,80,85,90,95,100};
+		values[] = {10,20,30,40,45,50,55,60,65,70,75,80,85,90,95,100};
 		default = 90;
 	};
 };

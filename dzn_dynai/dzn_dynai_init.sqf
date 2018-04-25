@@ -1,5 +1,5 @@
 // **************************
-// 	DZN DYNAI v0.8
+// 	DZN DYNAI v1.3
 //
 //	Initialized when:
 //	{ !isNil "dzn_dynai_initialized" }
@@ -8,7 +8,7 @@
 //	{ !isNil "dzn_dynai_initialized" && { dzn_dynai_initialized } }
 //
 // **************************
-if (hasInterface && !isServer) exitWith {}; // If a player - exits script
+dzn_dynai_version = "v1.3";
 
 // **************************
 //	SETTINGS
@@ -17,29 +17,32 @@ call compile preProcessFileLineNumbers "dzn_dynai\Settings.sqf";
 
 dzn_dynai_complexSkill = [ 
 	!dzn_dynai_UseSimpleSkill
-	, if (dzn_dynai_UseSimpleSkill) then {
-		dzn_dynai_overallSkillLevel	
-	} else {
-		dzn_dynai_complexSkillLevel			
-	}
+	, if (dzn_dynai_UseSimpleSkill) then { dzn_dynai_overallSkillLevel } else { dzn_dynai_complexSkillLevel }
 ];
-
-// **************************
-//	INIT CONDITIONS
-// **************************
-
-// Condition of initialization
-#define	dzn_dynai_CONDITION_BEFORE_INIT	true
+dzn_dynai_allowGroupResponse = (["par_dynai_enableGroupResponse", 1] call BIS_fnc_getParamValue) > 0;
 
 // **************************
 //	INITIALIZATION
 // **************************
 
+// Exit if PLAYER or SERVER when Headless is initialized
+if ( (hasInterface && !isServer) || (!isNil "HC" && isServer) ) exitWith {
+	call compile preProcessFileLineNumbers "dzn_dynai\fn\dzn_dynai_controlFunctions.sqf";
+	// If a player and no Zeus needed - exits script
+	if (dzn_dynai_enableZeusCompatibility) then {
+		call compile preProcessFileLineNumbers "dzn_dynai\fn\dzn_dynai_behaviourFunctions.sqf";
+		call compile preProcessFileLineNumbers "dzn_dynai\fn\dzn_dynai_zeusCompatibility.sqf";
+	};
+};
+
+dzn_dynai_owner = clientOwner;
+publicVariable "dzn_dynai_owner";
+
 dzn_dynai_initialized = false;
-waitUntil { dzn_dynai_CONDITION_BEFORE_INIT };
+waitUntil dzn_dynai_initCondition;
 
 // Initialization of dzn_gear
-waitUntil { !isNil "dzn_gear_serverInitDone" || !isNil "dzn_gear_initDone" };
+waitUntil { !isNil "dzn_gear_initDone" && { dzn_gear_initDone } };
 
 // Initialization of dzn_dynai
 dzn_dynai_activatedZones = [];
@@ -51,12 +54,9 @@ dzn_dynai_zoneProperties = [
 call compile preProcessFileLineNumbers "dzn_dynai\fn\dzn_dynai_dynaiFunctions.sqf";
 call compile preProcessFileLineNumbers "dzn_dynai\fn\dzn_dynai_controlFunctions.sqf";
 call compile preProcessFileLineNumbers "dzn_dynai\fn\dzn_dynai_behaviourFunctions.sqf";
-
-//	**************	SERVER OR HEADLESS	*****************
-if (!isNil "HC") then {if (isServer) exitWith {};};
-
-
-
+if (dzn_dynai_enableZeusCompatibility) then {
+	call compile preProcessFileLineNumbers "dzn_dynai\fn\dzn_dynai_zeusCompatibility.sqf";
+};
 
 // **************************
 //	DZN DYANI START

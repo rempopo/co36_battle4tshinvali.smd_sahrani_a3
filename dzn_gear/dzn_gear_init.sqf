@@ -1,5 +1,5 @@
 // **************************
-// 	DZN GEAR
+// 	DZN GEAR v2.8
 //
 //	Initialized when:
 //	{ !isNil "dzn_gear_initDone" }
@@ -7,6 +7,8 @@
 //	Server-side initialized when:
 //	{ !isNil "dzn_gear_serverInitDone" }
 //
+dzn_gear_version = "v2.8ace";
+
 // *************************
 //	SETTINGS
 // **************************
@@ -23,7 +25,10 @@ call compile preprocessFileLineNumbers "dzn_gear\fn\dzn_gear_functions.sqf";
 // **************************
 // EDIT MODE
 // **************************
-if (dzn_gear_editModeEnabled) then {call compile preprocessFileLineNumbers "dzn_gear\fn\dzn_gear_editMode.sqf";};
+if (dzn_gear_editModeEnabled) then {
+	call compile preprocessFileLineNumbers "dzn_gear\fn\dzn_gear_editMode.sqf";
+	[] spawn dzn_fnc_gear_editMode_initialize;
+};
 
 // **************************
 // GEARS
@@ -40,5 +45,13 @@ if (!isNil { _this select 1 } && { typename (_this select 1) == "SCALAR" }) then
 
 if (dzn_gear_enableGearAssignementTable) then { call compile preprocessFileLineNumbers "dzn_gear\plugins\AssignementTable.sqf"; };
 if (dzn_gear_enableGearNotes) then { call compile preprocessFileLineNumbers "dzn_gear\plugins\GearNotes.sqf"; };
+if (dzn_gear_enableZeusCompatibility) then { call compile preprocessFileLineNumbers "dzn_gear\plugins\ZeusCompatibility.sqf"; };
+
+if (
+	!dzn_gear_editModeEnabled
+	|| (isMultiplayer && count (call BIS_fnc_listPlayers) > 3)
+) then {
+	call dzn_fnc_gear_nullifyUnusedVars;
+};
 
 [] spawn dzn_fnc_gear_initialize;

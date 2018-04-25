@@ -3,7 +3,7 @@
 #define	GRPRES_DEBUG	false
 
 #define	CRIT_LOSES_LEVEL		floor (count (_this getVariable "dzn_dynai_units") * 0.66)
-#define 	CRIT_HOSTILE_AMOUNT	(count units _this * 1)
+#define 	CRIT_HOSTILE_AMOUNT		(count units _this * 1)
 #define	CRIT_INF_DISTANCE		500
 #define	CRIT_VEH_DISTANCE		1200
 
@@ -17,7 +17,6 @@ dzn_fnc_dynai_isIndoorGroup = {
 	
 	_r
 };
-
 
 // Response FSM functions
 dzn_fnc_dynai_updateActiveGroups = {
@@ -151,7 +150,7 @@ dzn_fnc_dynai_checkSquadKnownEnemiesCritical = {
 		1
 	};
 	
-	private _targets = (leader _this) targetsQuery [objNull, sideEnemy, "", [], 0];
+	private _targets = ((leader _this) targetsQuery [objNull, sideEnemy, "", [], 0]) select {[side (leader _this), _x select 2] call BIS_fnc_sideIsEnemy};
 	private _targetList = [];
 	private _isCritical = false;
 	{
@@ -160,8 +159,7 @@ dzn_fnc_dynai_checkSquadKnownEnemiesCritical = {
 		private _tgtKnowledge = _x select 0;		
 		if (
 			_tgt isKindOf "CAManBase" 
-			&& (_tgtKnowledge > 0.2) 
-			&& (_tgtSide != side _this) 
+			&& (_tgtKnowledge > 0.2)
 			&& {_tgt distance (leader _this) < CRIT_INF_DISTANCE}
 		) then {
 			_targetList pushBack _x;
@@ -335,8 +333,9 @@ dzn_fnc_dynai_unassignReinforcement = {
 	
 	waitUntil { time > _timer };
 	
-	_provider call dzn_fnc_dynai_initResponseGroup;
-	_requester call dzn_fnc_dynai_initResponseGroup;
+	private _groups = [];
+	if ( {alive _x} count (units _provider) > 0 ) then { _groups pushBack _provider };
+	if ( {alive _x} count (units _requester) > 0 ) then { _groups pushBack _requester };
 	
 	{
 		_x call dzn_fnc_dynai_initResponseGroup;
@@ -351,7 +350,7 @@ dzn_fnc_dynai_unassignReinforcement = {
 				[_x, _area] call dzn_fnc_createPathFromRandom;
 			};
 		};
-	} forEach [_provider, _requester];	
+	} forEach _groups;	
 };
 
 dzn_fnc_dynai_initResponseGroup = {
@@ -385,7 +384,8 @@ dzn_fnc_dynai_addGroupAsSupporter = {
 			waitUntil { !isNil "dzn_dynai_initialized" && { dzn_dynai_initialized } };
 			_this call dzn_fnc_dynai_addGroupAsSupporter;
 		};
-	}; 
+	};
+	
 	_group setVariable ["dzn_dynai_units", units _group];
 	
 	// Get nearest zone	
@@ -401,8 +401,25 @@ dzn_fnc_dynai_addGroupAsSupporter = {
 	
 	private _nearestZoneGroups = [_nearestZone, "groups"] call dzn_fnc_dynai_getZoneVar;
 	_nearestZoneGroups pushBack _group;
-
+	
+	_group setVariable ["dzn_dynai_homeZone", _nearestZone, true];
 	_group call dzn_fnc_dynai_initResponseGroup;
+};
+
+
+
+dzn_fnc_dynai_setSpotSkillRemote = {
+	if (local _this) then {
+		_this setSkill ["spotTime",1];
+		_this setSkill ["spotDistance",1];
+		_this setSkill ["aimingAccuracy", 0.75];
+		_this setSkill ["aimingSpeed", 1];
+	} else {
+		[_this, ["spotTime",1]] remoteExec ["setSkill",_this];
+		[_this, ["spotDistance",1]] remoteExec ["setSkill",_this];
+		[_this, ["aimingAccuracy",0.75]] remoteExec ["setSkill",_this];
+		[_this, ["aimingSpeed",1]] remoteExec ["setSkill",_this];
+	};
 };
 
 dzn_fnc_dynai_addUnitBehavior = {
@@ -421,6 +438,13 @@ dzn_fnc_dynai_addUnitBehavior = {
 	 *      
 	 */
 	params ["_unit", "_behaviour"];
+	
+	if (_unit isKindOf "CAManBase") then {
+		_unit call dzn_fnc_dynai_setSpotSkillRemote;
+	} else {
+		{ _unit call dzn_fnc_dynai_setSpotSkillRemote; } forEach (crew _unit);
+	};
+	
 	switch toLower(_behaviour) do {
 		case "indoor": {
 			[_unit, false] execFSM "dzn_dynai\FSMs\dzn_dynai_indoors_behavior.fsm";
@@ -428,15 +452,28 @@ dzn_fnc_dynai_addUnitBehavior = {
 		};
 		case "vehicle hold": {
 			[_unit, "All Aspect", false] execFSM "dzn_dynai\FSMs\dzn_dynai_vehicleHold_behavior.fsm";
+			_unit setVariable ["dzn_dynai_isVehicleHold", true, true];
 		};
 		case "vehicle 45 hold": {
 			[_unit, "Frontal", false] execFSM "dzn_dynai\FSMs\dzn_dynai_vehicleHold_behavior.fsm";
+			_unit setVariable ["dzn_dynai_isVehicleHold", true, true];
 		};
 		case "vehicle 90 hold": {
 			[_unit, "Full Frontal", false] execFSM "dzn_dynai\FSMs\dzn_dynai_vehicleHold_behavior.fsm";
+			_unit setVariable ["dzn_dynai_isVehicleHold", true, true];
+		};
+		case "vehicle overwatch": {
+			[_unit, "All Aspect", true] execFSM "dzn_dynai\FSMs\dzn_dynai_vehicleHold_behavior.fsm";
+			_unit setVariable ["dzn_dynai_isVehicleHold", true, true];
 		};
 	};
 };
+
+dzn_fnc_dynai_dropUnitBehavior = {
+	_this setVariable ["dzn_dynai_isIndoor", nil, true];
+	_this setVariable ["dzn_dynai_isVehicleHold", nil, true];
+};
+
 
 dzn_fnc_dynai_processUnitBehaviours = {
 	// spawn dzn_fnc_dynai_processUnitBehaviours
@@ -633,4 +670,37 @@ dzn_fnc_dynai_alertZone = {
 	[_this, [], "RANDOM SAD"] call dzn_fnc_dynai_moveGroups;
 	[_this, "COMBAT", true, 5] spawn dzn_fnc_dynai_setGroupsMode;
 	
+};
+
+dzn_fnc_dynai_vehicleAdvance = {
+	// @Grp spawn dzn_fnc_dynai_vehicleAdvance
+	if (_this getVariable ["dzn_dynai_vehicleAdvanceAssigned", false]) exitWith {};
+	_this setVariable  ["dzn_dynai_vehicleAdvanceAssigned", true];
+
+	waitUntil {_this getVariable ["dzn_dynai_wpSet", false]};
+	_this setVariable  ["dzn_dynai_vehicleAdvanceAssigned", nil];
+	
+	private _lastWp = (waypoints _this) select (count (waypoints _this) - 1);
+	_lastWp setWaypointType "Hold";
+	
+	private _unloadWP = (waypoints _this) select 0;
+	_unloadWP setWaypointType "UNLOAD";
+	waitUntil { 
+		sleep 15; 
+		(_lastWp select 1) == currentWaypoint _this
+		&& (leader _this) distance2d (waypointPosition [_this,(currentWaypoint _this)]) < 30
+	};
+	
+	private _vehicles = [];
+	{ _vehicles pushBackUnique (vehicle _x) } forEach ((units _this) select { vehicle _x != _x});	
+	{ [_x, "vehicle overwatch"] call dzn_fnc_dynai_addUnitBehavior; } forEach _vehicles;	
+	
+	private _infantry = (units _this) select { vehicle _x == _x };
+	private _infGrp = createGroup (side (_infantry select 0));
+	_infantry joinSilent _infGrp;
+	
+	private _loc = createTrigger ["EmptyDetector", getPos (leader _infGrp)];
+	_loc setTriggerArea [75,75,0,false,100];
+	[_infGrp, [_loc], 2 + random(5), true] spawn dzn_fnc_createPathFromRandom;
+	_loc spawn { sleep 1; deleteVehicle _this; };	
 };
